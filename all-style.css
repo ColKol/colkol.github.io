@@ -1,0 +1,68 @@
+:root{
+    --accent-color: rgb(159, 63, 145);
+    --outline-color: rgb(50, 50, 50);
+
+    --trans-pos-verti-start: 0rem;
+    --trans-pos-verti-end: 0rem;
+
+    --trans-pos-hori-start: 0rem;
+    --trans-pos-hori-end: 0rem;
+
+    --trans-opa-start: 1;
+    --trans-opa-end: 1;
+
+    --og-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('site-images/gita-img-1.jpeg');
+    --changed-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('site-images/gita-img-2.jpeg');
+    --background-opa: 0;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+body{
+    background-image: var(--og-image);
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    color: var(--outline-color);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    background-color: black;
+
+    /*transition: background-image 1s ease-in-out;*/
+}
+
+body.fade::before {
+    content: "";
+    background-image: var(--changed-image);;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: opacity 0.25s ease-in-out;
+}
+  
+body.fade.show::before {
+    opacity: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+a{
+    text-decoration: none;
+}
