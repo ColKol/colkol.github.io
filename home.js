@@ -294,8 +294,6 @@ document.addEventListener('keydown', event => {
 
 
 document.addEventListener('click', event => {
-    console.log('this is a click')
-
     switch (page_state){
         // Title Screen
         case 0:
