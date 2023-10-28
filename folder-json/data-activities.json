@@ -1,18 +1,24 @@
 {
     "0":{
         "name": "Chariz",
-        "date": "69/69/2069"
+        "date": "69/69/2069",
+        "thumbnail": "mindhkbrain.jpeg",
+        "description": "Designed 3D models for exhibitions of various Hong Kong mental health organizations, including CoolMinds, MindHK, and KELY Support Group."
     },
     "1":{
-        "name": "Clearbot",
+        "name": "UVision",
         "date": "69/69/2069"
     },
     "2":{
-        "name": "RayReader",
+        "name": "Clearbot",
         "date": "69/69/2069"
     },
     "3":{
-        "name": "Web@RC",
+        "name": "RayReader",
+        "date": "69/69/2069"
+    },
+    "4":{
+        "name": "WebRC",
         "date": "69/69/2069"
     }
 }

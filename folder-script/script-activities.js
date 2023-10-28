@@ -5,14 +5,13 @@ const title = document.getElementById('popup-title');
 var image_number = 0;
 var global_category;
 
+// open JSON file
 fetch('folder-json/data-activities.json')
     .then(response => response.json())
     .then(data => {
-    // Process the JSON data
     createProjects(data);
 })
   .catch(error => {
-    // Handle any errors
     console.log('Error:', error);
 });
 
@@ -21,9 +20,10 @@ function createProjects(all_projects){
   projects.innerHTML = "";
 
   for (let i = 0; i < Object.keys(all_projects).length; i++){
-    console.log(all_projects[i]);
+    // loop through activities and and add their popup buttons 
     let projectName = all_projects[i]["name"];
-    projects.innerHTML += `<button onclick="openPopup(${projectName})" class="project-button"> <div class="project-box" style="background-image: linear-gradient(var(--icon-gradient), var(--icon-gradient)), url('img-all/img-art/img-renders/art-crown1.jpeg')"> <h1> ${projectName} </h1> </div> </button>`;
+    let projectThumbnail = all_projects[i]["thumbnail"]
+    projects.innerHTML += `<button onclick="openPopup(${projectName})" class="project-button"> <div class="project-box" style="background-image: linear-gradient(var(--icon-gradient), var(--icon-gradient)), url('img-all/img-activities/img-${projectName.toLowerCase()}/${projectThumbnail}')"> <h1> ${projectName} </h1> </div> </button>`;
   }
 }
 
