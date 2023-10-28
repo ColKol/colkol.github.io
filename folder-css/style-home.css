@@ -1,0 +1,23 @@
+#secondary-name{
+    font-size: 2.5em;
+    margin: 0%;
+}
+
+#self-portrait{
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#side-image{
+    display:flex;
+    align-items:flex-start;
+    font-size: 1.25rem;
+    margin-top: 5rem;
+}
+
+#side-image h2{
+    margin:0%;
+    font-size: 3rem;
+}
