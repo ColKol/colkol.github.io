@@ -17,9 +17,14 @@ fetch('folder-json/data-activities.json')
 });
 
 function createProjects(all_projects){
-  console.log("bean");
-  console.log(all_projects);
-  console.log(Object.keys(all_projects).length);
+  let projects = document.getElementById("project-box-holder");
+  projects.innerHTML = "";
+
+  for (let i = 0; i < Object.keys(all_projects).length; i++){
+    console.log(all_projects[i]);
+    let projectName = all_projects[i]["name"];
+    projects.innerHTML += `<button onclick="openPopup(${projectName})" class="project-button"> <div class="project-box" style="background-image: linear-gradient(var(--icon-gradient), var(--icon-gradient)), url('img-all/img-art/img-renders/art-crown1.jpeg')"> <h1> ${projectName} </h1> </div> </button>`;
+  }
 }
 
 function openPopup(category) {
