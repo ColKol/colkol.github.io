@@ -126,7 +126,7 @@ h2{
 .project-box{
     color: var(--color-light);
     padding: 2rem;
-    /*border-radius: 0.5em;*/
+    border-radius: 1rem;
     box-sizing: border-box;
     background-position: center;
     height: 100%;
