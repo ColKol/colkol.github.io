@@ -17,7 +17,7 @@
     Light Green: #7DD856
     */
 
-    --centered-percent: 60%;
+    --centered-percent: 50%;
 
     --icon-brightness: 0.75;
     --icon-gradient: rgba(132, 85, 246, var(--icon-brightness));

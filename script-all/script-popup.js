@@ -5,20 +5,27 @@ const title = document.getElementById('popup-title');
 var image_number = 0;
 var global_category;
 
+// adds popup.css stylesheet to page
+let head = document.head;
+let link = document.createElement("link");
+
+link.type = "text/css";
+link.rel = "stylesheet";
+link.href = "style-all/style-popup.css";
+
+head.appendChild(link);
+
 function openPopup(category) {
     title.innerHTML = category;
-  
     category = category.toLowerCase();
-    global_category = category;
-    displayArt(category);
   
     popup.style.display = 'block';
-  }
+}
   
-  function closePopup() {
-    image_number = 0;
-    popup.style.display = 'none';
-  }
+function closePopup() {
+  image_number = 0;
+  popup.style.display = 'none';
+}
   
   closeBtn.addEventListener('click', closePopup);
   window.addEventListener('click', (event) => {
