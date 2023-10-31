@@ -147,3 +147,9 @@ h2{
         grid-template-columns: repeat(1, 1fr);
     }
 }
+
+.pdf-element{
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
+}

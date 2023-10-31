@@ -7,6 +7,13 @@ pageName = pageName.toLowerCase().trim();
 
 let allProjects;
 
+let cycleImages;
+let num = 0;
+
+getImage("chariz", function(allImages){
+  cycleImages = allImages;
+})
+
 // open JSON file
 fetch(`data-all/data-${pageName}.json`)
   .then(response => response.json())
@@ -26,18 +33,25 @@ link.href = "style-all/style-popup.css";
 head.appendChild(link);
 
 function openPopup(categoryID) {
-  popupTitle.innerHTML = allProjects[categoryID]["name"];
+  // setup popup based on page
+  switch(pageName){
+    case "activities":
+      activitiesPopup(categoryID)
+      break;
+    default:
+      console.log("no page found")
+  }
 
+  // make popup visible
   popup.style.display = 'block';
-
-  console.log(allProjects);
 }
-  
+
+// close popup by x button
 function closePopup() {
   popup.style.display = 'none';
 }
 
-// close popup using x button, clicking, and esc key
+// close popup by clicking web page
 closeBtn.addEventListener('click', closePopup);
 window.addEventListener('click', (event) => {
   if (event.target == popup) {
@@ -45,91 +59,66 @@ window.addEventListener('click', (event) => {
   }
 });
 
+// close popup by esc key
 document.addEventListener('keydown', event => {
   if (event.key == 'Escape'){
     closePopup();
   }
 });
-  
-function activitiesPopup(category){
-  console.log(category);
 
+function activitiesPopup(categoryID){
+  // update name and description
+  let projectName = allProjects[categoryID]["name"];
+  popupTitle.innerHTML = projectName;
+
+  let popupText = document.getElementById('popup-text');
+  popupText.innerHTML = allProjects[categoryID]["description"];
+
+  getImage(projectName.toLowerCase(), function(allImages){
+    // update the image to the first new image
+    popupImage = document.getElementById('popup-image');
+    popupImage.style.backgroundImage = `url("${allImages[0]["href"]}")`;
+
+    // update and reset values
+    cycleImages = allImages;
+    num = 0
+  })
 }
 
+function getImage(projectName, callback) {
+  // Create and open XMLHttpRequest object to path
+  const xhr = new XMLHttpRequest();
+  const path = `img-all/img-${pageName}/img-${projectName}`;
+  xhr.open("GET", path, true);
+  xhr.responseType = "document";
 
-
-  function displayArt(category) {
-    // Get the image container element
-    const container = document.getElementById("img-container");
-  
-    // Create a new XMLHttpRequest object
-    const xhr = new XMLHttpRequest();
-  
-    // Set the path to the images folder
-    const path = "img-all/img-art/img-" + category;
-  
-    // Open the request
-    xhr.open("GET", path, true);
-  
-    // Set the responseType to document so we can parse the response as HTML
-    xhr.responseType = "document";
-  
-    // Set the onload function
-    xhr.onload = function() {
-      // Get the HTML document from the response
+  xhr.onload = function() {
+      // Get the HTML document from the response and get images from document
       const doc = xhr.response;
-  
-      // Get all the image elements from the document
       const images = doc.querySelectorAll(".icon-image");
+
+      if(callback) callback(images);
+  };
+  xhr.send();
+}
+
+// cycles through images
+function start() {
+  var popupImage = document.getElementById('popup-image');       
+  var delay = 2;                           
+
+  var changeImage = function() {
+      var len = cycleImages.length;
       
-      /*
-      console.log(images);
-      console.log(image_number)
-      console.log(images['length'])
-      console.log(images[0]['href']);
-      */
-  
-      if (image_number < 0){
-        image_number = images['length'] - 1;
+      let path = cycleImages[num++]["href"];
+      popupImage.style.backgroundImage = `url("${path}")`;
+
+      if (num == len) {
+          num = 0;
       }
-  
-      else if (image_number >= images['length']){
-        image_number = 0;
-      }
-  
-      container.src = images[image_number]['href'];
-  
-      // Loop through the images and append them to the container element
-      /*
-      images.forEach(function(image) {
-        container.appendChild(image);
-        //container.src = images;
-        console.log('changing')
-      });*/
-    };
-  
-    // Send the request
-    xhr.send();
-  }
-  
-  function cycleImage(addend){
-    image_number += addend;
-    console.log(global_category)
-    displayArt(global_category);
-  }
-  
-  /*
-  var folder = "images/";
-  
-  $.ajax({
-      url : folder,
-      success: function (data) {
-          $(data).find("a").attr("href", function (i, val) {
-              if( val.match(/\.(jpe?g|png|gif)$/) ) { 
-                  $("body").append( "<img src='"+ folder + val +"'>" );
-              } 
-          });
-      }
-  });*/
-  
-  
+  };
+  setInterval(changeImage, delay * 1000);
+};
+window.onload=function(){
+start();
+}

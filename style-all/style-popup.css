@@ -22,19 +22,6 @@
     border-radius: 1rem;
 }
 
-#popup-image{
-    position: absolute;
-    top: 0%;
-    left: 50%;
-
-    border-radius: 0rem 1rem 1rem 0rem;
-
-    background-color: blueviolet;
-    width: 50%;
-    height: 100%;
-    z-index: -1;
-}
-
 .popup-header{
     background-color: var(--color-dark);
     color: var(--color-light);
@@ -60,4 +47,28 @@
 
 #close-popup b{
     font-size: 2rem;
+}
+
+/* activities page */
+
+#popup-image{
+    position: absolute;
+    top: 0% + 6rem;
+    left: 50%;
+
+    width: 50%;
+    height: calc(100% - 6.3rem);
+    z-index: -1;
+
+    border-radius: 0rem 0rem 1rem;
+
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#popup-text{
+    width: calc(50% - 4rem);
+    padding: 2rem;
+    margin: 0%;
 }
