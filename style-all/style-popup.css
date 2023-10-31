@@ -22,6 +22,19 @@
     border-radius: 1rem;
 }
 
+#popup-image{
+    position: absolute;
+    top: 0%;
+    left: 50%;
+
+    border-radius: 0rem 1rem 1rem 0rem;
+
+    background-color: blueviolet;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+}
+
 .popup-header{
     background-color: var(--color-dark);
     color: var(--color-light);

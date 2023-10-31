@@ -1,11 +1,21 @@
 const popup = document.getElementById('popup');
 const closeBtn = document.getElementById('close-popup');
-const title = document.getElementById('popup-title');
+const popupTitle = document.getElementById('popup-title');
 
-var image_number = 0;
-var global_category;
+let pageName = document.getElementById('page-name').innerHTML;
+pageName = pageName.toLowerCase().trim();
 
-// adds popup.css stylesheet to page
+let allProjects;
+
+// open JSON file
+fetch(`data-all/data-${pageName}.json`)
+  .then(response => response.json())
+  .then(data => {
+    allProjects = data;
+  })
+  .catch(error => {console.log('Error:', error);});
+
+// add popup.css stylesheet to page
 let head = document.head;
 let link = document.createElement("link");
 
@@ -15,31 +25,39 @@ link.href = "style-all/style-popup.css";
 
 head.appendChild(link);
 
-function openPopup(category) {
-    title.innerHTML = category;
-    category = category.toLowerCase();
-  
-    popup.style.display = 'block';
+function openPopup(categoryID) {
+  popupTitle.innerHTML = allProjects[categoryID]["name"];
+
+  popup.style.display = 'block';
+
+  console.log(allProjects);
 }
   
 function closePopup() {
-  image_number = 0;
   popup.style.display = 'none';
 }
+
+// close popup using x button, clicking, and esc key
+closeBtn.addEventListener('click', closePopup);
+window.addEventListener('click', (event) => {
+  if (event.target == popup) {
+    closePopup();
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key == 'Escape'){
+    closePopup();
+  }
+});
   
-  closeBtn.addEventListener('click', closePopup);
-  window.addEventListener('click', (event) => {
-    if (event.target == popup) {
-      closePopup();
-    }
-  });
-  
-  document.addEventListener('keydown', event => {
-    if (event.key == 'Escape'){
-      closePopup();
-    }
-  });
-  
+function activitiesPopup(category){
+  console.log(category);
+
+}
+
+
+
   function displayArt(category) {
     // Get the image container element
     const container = document.getElementById("img-container");
