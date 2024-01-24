@@ -105,7 +105,21 @@ function getImage(projectName, callback) {
 // cycles through images
 function start() {
   var popupImage = document.getElementById('popup-image');       
-  var delay = 2;                           
+  var delay = 2;
+
+  var folder = "img-all/img-activities/img-webrc/";
+
+  $.ajax({
+    url : folder,
+    success: function (data) {
+        $(data).find("a").attr("href", function (i, val) {
+            if( val.match(/\.(jpe?g|png|gif)$/) ) { 
+              console.log(val)
+                $("body").append( "<img src='" + val +"'>" );
+            } 
+        });
+    }
+  });
 
   var changeImage = function() {
       var len = cycleImages.length;

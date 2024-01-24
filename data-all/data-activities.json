@@ -23,6 +23,7 @@
     "4":{
         "name": "WebRC",
         "date": "69/69/2069",
-        "thumbnail": "webrc-vscode.jpeg"
+        "thumbnail": "webrc-vscode.jpeg",
+        "description": "Helped start the Web@RC project, planning a 13-lesson web development course and contributing to an education website resource"
     }
 }
