@@ -17,32 +17,41 @@ h1, h2{
     display: grid;
     grid-template-columns:  1fr 0.618fr;
     height: 100%;
+
+    animation-name: fadeIn;
+    animation-duration: 1s;
 }
 
 .phiGrid div{
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #self-portrait{
     border-radius: 50%;
     object-fit: cover;
 
-    width: 50%;
+    width: 75%;
+    margin: auto;
 }
 
-#secondary-name{
-    font-size: 2.5em;
-    margin: 0%;
+.phiGrid h1{
+    font-size: 4rem;
 }
 
-#side-image{
-    display:flex;
-    align-items:flex-start;
-    font-size: 1.25rem;
-    margin-top: 5rem;
+.phiGrid h2{
+    font-size: 2rem;
 }
 
-#side-image h2{
-    margin:0%;
-    font-size: 3rem;
+.phiGrid p{
+    font-size: 1.5rem;
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+}
+
+.phiGrid a{
+    animation-duration: 1s;
+    font-size: 2rem;
 }
