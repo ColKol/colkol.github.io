@@ -1,0 +1,48 @@
+html, body {
+    height: 100%;
+}
+
+body{
+    background: linear-gradient(to top right, var(--color-dark),  var(--color-accent));
+    background-color: var(--color-accent);
+
+    color: white;
+}
+
+h1, h2{
+    margin: 0%;
+}
+
+.phiGrid{
+    display: grid;
+    grid-template-columns:  1fr 0.618fr;
+    height: 100%;
+}
+
+.phiGrid div{
+    text-align: right;
+}
+
+#self-portrait{
+    border-radius: 50%;
+    object-fit: cover;
+
+    width: 50%;
+}
+
+#secondary-name{
+    font-size: 2.5em;
+    margin: 0%;
+}
+
+#side-image{
+    display:flex;
+    align-items:flex-start;
+    font-size: 1.25rem;
+    margin-top: 5rem;
+}
+
+#side-image h2{
+    margin:0%;
+    font-size: 3rem;
+}
